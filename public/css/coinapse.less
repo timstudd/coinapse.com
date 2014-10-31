@@ -1,0 +1,87 @@
+body {
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #DDD;
+}
+h3 {
+	display: inline-block;
+}
+#logo a {
+	color: #333;
+}
+#chartRow {
+	background-color: #F6F6F8;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+	margin: 15px;
+}
+#controls {
+	margin-top: 12px;
+	display: inline-block;
+}
+#controls-exchanges {
+	margin-top: 20px;
+	.btn {
+		position: relative;
+		padding-left: 30px;
+	}
+	.btn:before {
+		background-color: red;
+		border-radius: 10px;
+		content: "";
+		height: 10px;
+		left: 10px;
+		position: absolute;
+		top: 10px;
+		width: 10px;
+	}
+	.btn.on:before {
+		background-color: green;
+	}
+}
+#signature {
+	margin-top: 12px;
+}
+button {
+	background-color: #EEE !important;
+	&.on {
+		background-color: #FFF !important;
+	}
+}
+.green {
+	color: green;
+}
+.red {
+	color: red;
+}
+.bold {
+	font-weight: 700;
+}
+
+#tooltip {
+	position: absolute;
+	display: none;
+	border: 1px solid #DDD;
+	padding: 2px;
+	background-color: #EEE;
+	opacity: 0.80;
+}
+
+@media (max-width: 900px) {
+	.container > div.row > div {
+		padding: 0;
+	}
+	h3, #controls-exchanges {
+		margin-top: 0;
+	}
+	#chartRow {
+		min-height: 50%;
+	}
+	#chartRow > div {
+		padding: 0;
+	}
+}
+@media (min-width: 900px) {
+	#chartRow {
+		padding: 20px;
+	}
+}
