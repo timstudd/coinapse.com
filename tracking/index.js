@@ -16,7 +16,8 @@ var m10 = {}
 var updateM10 = function(tracker, result) {
 	m10[tracker.name] = m10[tracker.name] || [];
 	m10[tracker.name].push(result);
-	while (m10[tracker.name].length > 300) {
+	var minDate = new Date().valueOf() - 600000;
+	while (m10[tracker.name][0][0] < minDate) {
 		m10[tracker.name].shift();
 	}
 	redis.set('m10', JSON.stringify(m10));
