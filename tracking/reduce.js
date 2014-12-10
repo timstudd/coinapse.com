@@ -258,10 +258,10 @@ var cleanupReduce = function(tracker) {
 	// Last Year
 	var startDate = new Date(Date.now());
 	// startDate.setFullYear(startDate.getFullYear() - 1);
-	startDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() - 37);
+	startDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() - 60);
 
 	var endDate = new Date(Date.now());
-	endDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 30);
+	endDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 45);
 
 	return genericMapReduce({
 		query: { tracker: tracker.name, date: { $gte: startDate, $lt: endDate } },
