@@ -11,9 +11,9 @@ var express = require('express')
   , cronJob = require('cron').CronJob
   , env = process.env.NODE_ENV || 'development';
 
-// process.on('uncaughtException', function (err) {
-// 	console.log('Exception: ', err.stack);
-// });
+process.on('uncaughtException', function (err) {
+	console.log('Exception: ', err.stack);
+});
 
 mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 	if (err) {
