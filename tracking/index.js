@@ -6,8 +6,8 @@ var https = require('https')
   , loadedBackupM10 = false;
 
 var trackers = [
-	// { title: 'BTC-e', name: 'btce', url: 'https://btc-e.com/api/2/btc_usd/ticker' },
-	// { title: 'Bitstamp', name: 'bitstamp', url: 'https://www.bitstamp.net/api/ticker/' },
+	{ title: 'BTC-e', name: 'btce', url: 'https://btc-e.com/api/2/btc_usd/ticker' },
+	{ title: 'Bitstamp', name: 'bitstamp', url: 'https://www.bitstamp.net/api/ticker/' },
 	{ title: 'Bitfinex', name: 'bitfinex', url: 'https://api.bitfinex.com/v1/ticker/btcusd' },
 ];
 
