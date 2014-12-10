@@ -2,7 +2,8 @@ require('newrelic');
 
 var express = require('express')
   , app = express()
-  // , logfmt = require('logfmt')
+  , logfmt = require('logfmt')
+  , compression = require('compression')
   , mongoose = require('mongoose')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
@@ -22,7 +23,7 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 
 require('./register_models')();
 
-app.use(express.compress());
+app.use(compression());
 app.use(logfmt.requestLogger());
 app.use(express.static(__dirname + '/public'));
 
