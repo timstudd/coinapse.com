@@ -307,9 +307,12 @@ exports.cleanup = function(tracker, callback) {
 		async.mapSeries(results,
 			function(result, callback) {
 				if (result.value.count < 2) {
+					console.log('No records to remove for', tracker.name);
 					callback();
 					return;
 				}
+
+				console.log('Found records to remove for', tracker.name);
 
 				var startDate = result.value.id;
 				var endDate = startDate + 600000; // 10min
