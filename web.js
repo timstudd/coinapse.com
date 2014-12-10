@@ -13,6 +13,9 @@ process.on('uncaughtException', function (err) {
 	console.log('Exception: ', err.stack);
 });
 
+console.log('Attempting to listen on: ', process.env.PORT);
+server.listen(process.env.PORT || 3000);
+
 mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 	if (err) {
 		throw err;
@@ -57,13 +60,10 @@ app.configure('production', function(){
 	}, null, true, 'America/Los_Angeles');
 
 	// Cleanup records twice per hour
-	new cronJob('0 */30 * * * *', function(){
-		tracking.cleanup(mongoose);
-	}, null, true, 'America/Los_Angeles');
+	// new cronJob('0 */30 * * * *', function(){
+	// 	tracking.cleanup(mongoose);
+	// }, null, true, 'America/Los_Angeles');
 
 	// Generate initial summaries
 	tracking.generateSummaries(mongoose);
 });
-
-console.log('Attempting to listen on: ', process.env.PORT)
-server.listen(process.env.PORT || 3000);
