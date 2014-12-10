@@ -13,14 +13,14 @@ process.on('uncaughtException', function (err) {
 	console.log('Exception: ', err.stack);
 });
 
-console.log('Attempting to listen on: ', process.env.PORT);
-server.listen(process.env.PORT || 3000);
-
 mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 	if (err) {
 		throw err;
 	}
 });
+console.log('Attempting to listen on: ', process.env.PORT);
+server.listen(process.env.PORT || 3000);
+
 
 require('./register_models')();
 
