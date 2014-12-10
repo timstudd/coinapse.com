@@ -21,8 +21,8 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 
 require('./register_models')();
 
-app.use(express.compress());
-app.use(logfmt.requestLogger());
+// app.use(express.compress());
+// app.use(logfmt.requestLogger());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
