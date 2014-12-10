@@ -312,8 +312,8 @@ exports.cleanup = function(tracker, callback) {
 				}
 
 				var startDate = result.value.id;
-				var endDate = startDate + 300000; // 5min
-				var midDate = startDate + 150000; // 2.5min
+				var endDate = startDate + 600000; // 10min
+				var midDate = startDate + 300000; // 5min
 				var lastVal = result.value.value;
 
 				Tracker.find({ tracker: tracker.name, date: { $gte: startDate, $lt: endDate } }).remove(function(err) {

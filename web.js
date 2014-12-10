@@ -52,8 +52,8 @@ app.configure('production', function(){
 		tracking.track(mongoose, io);
 	}, null, true, 'America/Los_Angeles');
 
-	// Cleanup records every hour
-	new cronJob('0 0 * * * *', function(){
+	// Cleanup records twice per hour
+	new cronJob('0 */2 * * * *', function(){
 		tracking.cleanup(mongoose);
 	}, null, true, 'America/Los_Angeles');
 
