@@ -5,13 +5,13 @@ var express = require('express')
   , logfmt = require('logfmt')
   , mongoose = require('mongoose')
   , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server)
+  // , io = require('socket.io').listen(server)
   , tracking = require('./tracking')
   , cronJob = require('cron').CronJob;
 
-process.on('uncaughtException', function (err) {
-	console.log('Exception: ', err.stack);
-});
+// process.on('uncaughtException', function (err) {
+// 	console.log('Exception: ', err.stack);
+// });
 
 mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 	if (err) {
