@@ -45,29 +45,27 @@ app.get('/views', function(req, res){
 
 
 if (env == 'production') {
-	// app.get('/data', function(req, res) {
-	// 	tracking.summary(mongoose, req, res);
-	// });
-
-	app.get('/clean', function(req, res) {
-		tracking.cleanup(mongoose);
+	app.get('/data', function(req, res) {
+		tracking.summary(mongoose, req, res);
 	});
 
-	// Record tickers every two seconds
-	// new cronJob('*/2 * * * * *', function(){
-	// 	console.log('Recording tickers');
-	// 	tracking.track(mongoose, io);
-	// }, null, true, 'America/Los_Angeles');
-
-	// Cleanup records twice per hour
-	// new cronJob('0 */30 * * * *', function(){
+	// app.get('/clean', function(req, res) {
 	// 	tracking.cleanup(mongoose);
-	// }, null, true, 'America/Los_Angeles');
+	// });
+
+	// Record tickers every two seconds
+	new cronJob('*/2 * * * * *', function(){
+		console.log('Recording tickers');
+		tracking.track(mongoose, io);
+	}, null, true, 'America/Los_Angeles');
+
+	// Cleanup records every hour
+	new cronJob('0 0 * * * *', function(){
+		tracking.cleanup(mongoose);
+	}, null, true, 'America/Los_Angeles');
 
 	// Generate initial summaries
-	// tracking.generateSummaries(mongoose);
+	tracking.generateSummaries(mongoose);
 }
 
-
-console.log('Attempting to listen on: ', process.env.PORT);
 server.listen(process.env.PORT || 3000);
