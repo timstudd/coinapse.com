@@ -43,9 +43,9 @@ app.get('/views', function(req, res){
 
 
 app.configure('production', function(){
-	app.get('/data', function(req, res) {
-		tracking.summary(mongoose, req, res);
-	});
+	// app.get('/data', function(req, res) {
+	// 	tracking.summary(mongoose, req, res);
+	// });
 
 	// app.get('/clean', function(req, res) {
 	// 	tracking.cleanup(mongoose);
