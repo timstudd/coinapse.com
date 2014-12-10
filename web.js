@@ -65,4 +65,5 @@ app.configure('production', function(){
 	tracking.generateSummaries(mongoose);
 });
 
+console.log('Attempting to listen on: ', process.env.PORT)
 server.listen(process.env.PORT || 3000);
