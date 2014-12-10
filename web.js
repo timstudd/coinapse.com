@@ -21,8 +21,8 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 
 require('./register_models')();
 
-// app.use(express.compress());
-// app.use(logfmt.requestLogger());
+app.use(express.compress());
+app.use(logfmt.requestLogger());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
@@ -47,15 +47,15 @@ app.configure('production', function(){
 		tracking.summary(mongoose, req, res);
 	});
 
-	app.get('/clean', function(req, res) {
-		tracking.cleanup(mongoose);
-	});
+	// app.get('/clean', function(req, res) {
+	// 	tracking.cleanup(mongoose);
+	// });
 
 	// Record tickers every two seconds
-	new cronJob('*/2 * * * * *', function(){
-		console.log('Recording tickers');
-		tracking.track(mongoose, io);
-	}, null, true, 'America/Los_Angeles');
+	// new cronJob('*/2 * * * * *', function(){
+	// 	console.log('Recording tickers');
+	// 	tracking.track(mongoose, io);
+	// }, null, true, 'America/Los_Angeles');
 
 	// Cleanup records twice per hour
 	// new cronJob('0 */30 * * * *', function(){
