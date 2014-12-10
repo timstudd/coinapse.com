@@ -41,6 +41,10 @@ app.get('/views', function(req, res){
 	tracking.getViews(req, res);
 });
 
+console.log('Attempting to listen on: ', process.env.PORT);
+server.listen(process.env.PORT || 3000);
+
+
 app.configure('production', function(){
 	app.get('/data', function(req, res) {
 		tracking.summary(mongoose, req, res);
@@ -64,6 +68,3 @@ app.configure('production', function(){
 	// Generate initial summaries
 	// tracking.generateSummaries(mongoose);
 });
-
-console.log('Attempting to listen on: ', process.env.PORT);
-server.listen(process.env.PORT || 3000);
