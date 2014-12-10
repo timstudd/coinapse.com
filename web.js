@@ -18,9 +18,6 @@ mongoose.connect(process.env.MONGOLAB_URI, function(err) {
 		throw err;
 	}
 });
-console.log('Attempting to listen on: ', process.env.PORT);
-server.listen(process.env.PORT || 3000);
-
 
 require('./register_models')();
 
@@ -65,5 +62,8 @@ app.configure('production', function(){
 	// }, null, true, 'America/Los_Angeles');
 
 	// Generate initial summaries
-	tracking.generateSummaries(mongoose);
+	// tracking.generateSummaries(mongoose);
 });
+
+console.log('Attempting to listen on: ', process.env.PORT);
+server.listen(process.env.PORT || 3000);
