@@ -2,12 +2,13 @@ require('newrelic');
 
 var express = require('express')
   , app = express()
-  , logfmt = require('logfmt')
+  // , logfmt = require('logfmt')
   , mongoose = require('mongoose')
   , server = require('http').createServer(app)
   // , io = require('socket.io').listen(server)
   , tracking = require('./tracking')
-  , cronJob = require('cron').CronJob;
+  , cronJob = require('cron').CronJob
+  , env = process.env.NODE_ENV || 'development';
 
 // process.on('uncaughtException', function (err) {
 // 	console.log('Exception: ', err.stack);
@@ -42,10 +43,10 @@ app.get('/views', function(req, res){
 });
 
 
-app.configure('production', function(){
-	// app.get('/data', function(req, res) {
-	// 	tracking.summary(mongoose, req, res);
-	// });
+if (env == 'production') {
+	app.get('/data', function(req, res) {
+		tracking.summary(mongoose, req, res);
+	});
 
 	// app.get('/clean', function(req, res) {
 	// 	tracking.cleanup(mongoose);
@@ -64,7 +65,7 @@ app.configure('production', function(){
 
 	// Generate initial summaries
 	// tracking.generateSummaries(mongoose);
-});
+}
 
 
 console.log('Attempting to listen on: ', process.env.PORT);
