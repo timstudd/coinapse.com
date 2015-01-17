@@ -28,11 +28,11 @@ app.use(logfmt.requestLogger());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/templates/index.html');
+	res.sendFile(__dirname + '/templates/index.html');
 });
 
 app.get('/robots.txt', function(req, res) {
-	res.sendfile(__dirname + '/robots.txt');
+	res.sendFile(__dirname + '/robots.txt');
 });
 
 app.get('/exchanges', function(req, res) {
