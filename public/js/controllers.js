@@ -58,7 +58,7 @@ coinapse.controller('CoinapseCtrl', ['$scope', '$http', 'socket', function($scop
 					}
 					if (i == $scope.data[key][optionKey].length - 1) {
 						results[key][optionKey].end = $scope.data[key][optionKey][i][1];
-						results[key][optionKey].deltaPercent = ((results[key][optionKey].start / results[key][optionKey].end) - 1.0) * -100.0;
+						results[key][optionKey].deltaPercent = (1 - results[key][optionKey].end / results[key][optionKey].start) * -100.000;
 						results[key][optionKey].deltaDollar = results[key][optionKey].end - results[key][optionKey].start;
 					}
 				}
