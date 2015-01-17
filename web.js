@@ -49,10 +49,6 @@ if (env == 'production') {
 		tracking.summary(mongoose, req, res);
 	});
 
-	// app.get('/clean', function(req, res) {
-	// 	tracking.cleanup(mongoose);
-	// });
-
 	// Record tickers every two seconds
 	new cronJob('*/2 * * * * *', function(){
 		console.log('Recording tickers');
